@@ -16,7 +16,11 @@ const team: TeamMember[] = [
   { name: "Ishu Trivedi", role: "Senior Software Engineer", headshot: "/headshots/ishu.png" },
   { name: "Ming Mei Dang", role: "Data Scientist", headshot: "/headshots/mei.jpeg" },
   { name: "Mohamed Fouda", role: "Systems Designer", headshot: "/headshots/mohamed.jpeg" },
-  { name: "Salman Naqvi", role: "Cloud Security & Automation Engineer", headshot: "/headshots/salman.jpeg" },
+  {
+    name: "Salman Naqvi",
+    role: "Cloud Security & Automation Engineer",
+    headshot: "/headshots/salman-naqvi.jpeg",
+  },
   { name: "Linh Van Khuong", role: "UX/UI Designer", headshot: "/headshots/linh.JPG" },
   { name: "Zac Waite", role: "AI Services Full Stack Engineer", headshot: "/headshots/zac.JPEG" },
 ];
