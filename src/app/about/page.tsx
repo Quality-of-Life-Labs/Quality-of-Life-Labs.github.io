@@ -1,19 +1,83 @@
-const team = [
-  { name: "Grayson Bass", role: "Team Lead" },
-  { name: "Alexa Martínez Soto", role: "Data Scientist" },
-  { name: "Anmol Manchanda", role: "Software Engineer" },
-  { name: "Connie Kang", role: "UX/UI & Graphic Designer" },
-  { name: "Dipto Biswas", role: "Lead Software Engineer" },
-  { name: "Guruprasanna Rajukannan Suresh", role: "Senior Software Engineer" },
-  { name: "Ishu Trivedi", role: "Senior Software Engineer" },
-  { name: "Ming Mei Dang", role: "Data Scientist" },
-  { name: "Mohamed Fouda", role: "Systems Designer" },
+import Image from "next/image";
+
+type TeamMember = {
+  name: string;
+  role: string;
+  headshot?: string;
+  character?: string;
+};
+
+const team: TeamMember[] = [
+  {
+    name: "Grayson Bass",
+    role: "Team Lead",
+    headshot: "/headshots/grayson.jpeg",
+    character: "/team-characters/grayson-bass.png",
+  },
+  {
+    name: "Alexa Martínez Soto",
+    role: "Data Scientist",
+    headshot: "/headshots/alexa.jpeg",
+  },
+  {
+    name: "Anmol Manchanda",
+    role: "Software Engineer",
+    headshot: "/headshots/anmol.jpeg",
+    character: "/team-characters/anmol-manchanda.png",
+  },
+  {
+    name: "Connie Kang",
+    role: "UX/UI & Graphic Designer",
+    headshot: "/headshots/connie.png",
+    character: "/team-characters/connie-kang.png",
+  },
+  {
+    name: "Dipto Biswas",
+    role: "Lead Software Engineer",
+    headshot: "/headshots/dipto.png",
+    character: "/team-characters/dipto-biswas.png",
+  },
+  {
+    name: "Guruprasanna Rajukannan Suresh",
+    role: "Senior Software Engineer",
+    headshot: "/headshots/guru.jpeg",
+    character: "/team-characters/guru-suresh.png",
+  },
+  {
+    name: "Ishu Trivedi",
+    role: "Senior Software Engineer",
+    headshot: "/headshots/ishu.png",
+    character: "/team-characters/ishu-trivedi.png",
+  },
+  {
+    name: "Ming Mei Dang",
+    role: "Data Scientist",
+    headshot: "/headshots/mei.jpeg",
+    character: "/team-characters/mei-dang.png",
+  },
+  {
+    name: "Mohamed Fouda",
+    role: "Systems Designer",
+    headshot: "/headshots/mohamed.jpeg",
+    character: "/team-characters/mohamed-fouda.png",
+  },
   {
     name: "Salman Naqvi",
     role: "Cloud Security & Automation Engineer",
+    headshot: "/headshots/salman-naqvi.jpeg",
+    character: "/team-characters/salman-naqvi.png",
   },
-  { name: "Linh Van Khuong", role: "UX/UI Designer" },
-  { name: "Zac Waite", role: "AI Services Full Stack Engineer" },
+  {
+    name: "Linh Van Khuong",
+    role: "UX/UI Designer",
+    headshot: "/headshots/linh.JPG",
+    character: "/team-characters/linh-khuong.png",
+  },
+  {
+    name: "Zac Waite",
+    role: "AI Services Full Stack Engineer",
+    headshot: "/headshots/zac.JPEG",
+  },
 ];
 
 const getInitials = (name: string) =>
@@ -46,14 +110,46 @@ export default function AboutPage() {
             key={member.name}
             className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm shadow-slate-900/5"
           >
-            <div className="mb-5 flex h-64 items-center justify-center rounded-2xl bg-slate-100">
-              <span
-                aria-hidden="true"
-                className="text-3xl font-heading text-slate-400"
-              >
-                {getInitials(member.name)}
-              </span>
-              <span className="sr-only">{`Placeholder headshot for ${member.name}`}</span>
+            <div className="relative mb-8">
+              <div className="overflow-hidden rounded-2xl bg-slate-100">
+                {member.headshot ? (
+                  <div className="relative h-64">
+                    <Image
+                      src={member.headshot}
+                      alt={`Headshot of ${member.name}`}
+                      fill
+                      sizes="(min-width: 768px) 220px, 100vw"
+                      className="object-cover object-center"
+                      priority={member.name === "Grayson Bass"}
+                    />
+                  </div>
+                ) : (
+                  <div className="flex h-64 items-center justify-center">
+                    <span
+                      aria-hidden="true"
+                      className="text-3xl font-heading text-slate-400"
+                    >
+                      {getInitials(member.name)}
+                    </span>
+                    <span className="sr-only">{`Placeholder headshot for ${member.name}`}</span>
+                  </div>
+                )}
+              </div>
+              {member.character && (
+                <div className="pointer-events-none absolute -bottom-1 -right-3 h-28 w-28">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-1 rounded-br-full bg-white rotate-180"
+                  />
+                  <Image
+                    src={member.character}
+                    alt={`Character illustration of ${member.name}`}
+                    width={112}
+                    height={112}
+                    className="relative z-10 h-full w-full object-contain drop-shadow-lg"
+                  />
+                </div>
+              )}
             </div>
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
               {member.role}
