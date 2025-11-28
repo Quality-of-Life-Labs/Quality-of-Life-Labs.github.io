@@ -136,17 +136,18 @@ export default function AboutPage() {
                 )}
               </div>
               {member.character && (
-                <div className="pointer-events-none absolute -bottom-2 -right-2 h-24 w-24">
-                  <div className="absolute inset-0 rounded-tl-[120px] rounded-tr-none rounded-br-none rounded-bl-none border-[5px] border-white bg-white"></div>
-                  <div className="absolute bottom-0 right-0 h-28 w-28 translate-y-2 translate-x-2">
-                    <Image
-                      src={member.character}
-                      alt={`Character illustration of ${member.name}`}
-                      width={160}
-                      height={160}
-                      className="h-full w-full object-contain drop-shadow-2xl"
-                    />
-                  </div>
+                <div className="pointer-events-none absolute -bottom-1 -right-3 h-28 w-28">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-1 rounded-br-full bg-white rotate-180"
+                  />
+                  <Image
+                    src={member.character}
+                    alt={`Character illustration of ${member.name}`}
+                    width={112}
+                    height={112}
+                    className="relative z-10 h-full w-full object-contain drop-shadow-lg"
+                  />
                 </div>
               )}
             </div>
